@@ -15,4 +15,4 @@ set keymap vi
 export set PATH=$PATH:~/code/android/sdk/tools:~/code/android/sdk/platform-tools
 alias vi=vim
 export set EDITOR="vim -X"
-alias tm="tmux -2 attach -d"
+alias tm="tmux -2 attach -d || tmux"
