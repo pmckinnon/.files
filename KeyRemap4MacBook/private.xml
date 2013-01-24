@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<root>
+  <appdef>
+    <appname>Terminal</appname>
+    <equal>com.apple.Terminal</equal>
+  </appdef>
+
+  <appdef>
+    <appname>Iterm2</appname>
+    <equal>com.googlecode.iterm2</equal>
+  </appdef>
+
+  <appdef>
+    <appname>Vmware</appname>
+    <equal>com.vmware.Fusion</equal>
+  </appdef>
+
+  <item>
+    <name>Change control to command, except in the terminal</name>
+    <identifier>private.swap_control_and_command</identifier>
+    <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+    <not>Terminal</not>
+    <not>Iterm2</not>
+    <not>Vmware</not>
+  </item>
+
+  <item>
+    <name>Swap command and option, except in VMFusion</name>
+    <identifier>private.swap_command_and_option</identifier>
+    <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+    <not>Vmware</not>
+  </item>
+</root>
