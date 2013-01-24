@@ -1,6 +1,6 @@
 export PATH=~/bin:$PATH
 
-source ~/.bash_completion.d/*
+[ -d ~/.bash_completion.d ] && source ~/.bash_completion.d/*
 
 export PS1='\u: \w$(__git_ps1 "(%s)")\$ '
 export CLICOLOR=1
