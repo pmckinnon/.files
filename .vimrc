@@ -1,6 +1,8 @@
 set runtimepath^=/au/IT/share_vim
 "set runtimepath^=/usr/local/share/vim
 
+filetype plugin indent on
+
 "
 " remap Home/End keys in VNC so they work?
 "
@@ -72,9 +74,10 @@ set laststatus=2      " always display a status line
 "
 " filename completion
 "
-set wildignore+=*~    " ignore ~    files for filename completion
-set wildignore+=*.bak " ignore .bak files for filename completion
-set wildignore+=*.o   " ignore .o   files for filename completion
+set wildignore+=*~      " ignore ~    files for filename completion
+set wildignore+=*.bak   " ignore .bak files for filename completion
+set wildignore+=*.o     " ignore .o   files for filename completion
+set wildignore+=*.class " ignore .o   files for filename completion
 
 "
 " when <TAB> is used for filename completion, display the longest 
@@ -208,6 +211,10 @@ endfunction
 nnoremap <leader>g :call GrepForCurrentWord()<cr>
 nnoremap <leader>f :call GrepForCurrentWordRails()<cr>
 nnoremap <leader>q :qa<cr>
+nnoremap <leader>a :Ant debug install<cr>
+nnoremap <leader>i :JavaImportOrganize<cr>
+nnoremap <leader>n :lnext<cr>
+nnoremap <leader>p :lprev<cr>
 
 
 "set t_Co=256
