@@ -1,0 +1,14 @@
+[user]
+	name = Patrick McKinnon
+	email = patrick@bloomfire.com
+
+[diff]
+  tool = vimdiff
+  #external = /Users/patrick/.git-diff-wrapper.sh
+
+[difftool]
+  prompt = false
+[color]
+	ui = auto
+[branch]
+	autosetupmerge = true

@@ -12,7 +12,8 @@ set -o vi
 set editing-mode vi
 set keymap vi
 
-export set PATH=$PATH:~/code/android/sdk/tools:~/code/android/sdk/platform-tools
+export set ANDROID_HOME=~/code/android/sdk
+export set PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 alias vi=vim
 export set EDITOR="vim -X"
 alias tm="tmux -2 attach -d || tmux"

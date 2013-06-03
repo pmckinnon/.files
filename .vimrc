@@ -2,6 +2,7 @@ set runtimepath^=/au/IT/share_vim
 "set runtimepath^=/usr/local/share/vim
 
 filetype plugin indent on
+au BufNewFile,BufRead *.gradle setf groovy
 
 "
 " remap Home/End keys in VNC so they work?
@@ -213,6 +214,7 @@ nnoremap <leader>f :call GrepForCurrentWordRails()<cr>
 nnoremap <leader>q :qa<cr>
 nnoremap <leader>a :Ant debug install<cr>
 nnoremap <leader>i :JavaImportOrganize<cr>
+nnoremap <leader>u :ProjectCacheClear<cr>:ProjectRefreshAll<cr>
 nnoremap <leader>n :lnext<cr>
 nnoremap <leader>p :lprev<cr>
 
