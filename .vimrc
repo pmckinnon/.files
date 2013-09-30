@@ -57,7 +57,7 @@ set expandtab         " expand tabs into spaces (bad for Makefiles)
 set formatoptions=    " disable unwanted vim formating
 set showmatch         " disable matching [({ for ]}] when inserted
 
-" 
+"
 " status line
 "
 set ruler             " show row/col information
@@ -66,7 +66,7 @@ set showcmd           " show what command is being typed
 set cmdheight=2       " try to eliminate some "press RETURN" messages
 set laststatus=2      " always display a status line
 
-" 
+"
 " mouse (annoying, disable for now)
 "
 "set mouse=a           " use the mouse to move the cursor in all modes
@@ -81,7 +81,7 @@ set wildignore+=*.o     " ignore .o   files for filename completion
 set wildignore+=*.class " ignore .o   files for filename completion
 
 "
-" when <TAB> is used for filename completion, display the longest 
+" when <TAB> is used for filename completion, display the longest
 " common matching strint, and display a list of all possible matches
 " each time <TAB> is hit again, choose the next full match
 "
@@ -131,7 +131,7 @@ augroup gzip
     autocmd BufReadPost,FileReadPost   *.gz execute ":doautocmd BufReadPost " . expand("%:r")
     autocmd BufWritePost,FileWritePost *.gz !mv <afile> <afile>:r
     autocmd BufWritePost,FileWritePost *.gz !gzip <afile>:r
-  
+
     autocmd FileAppendPre              *.gz !gunzip <afile>
     autocmd FileAppendPre              *.gz !mv <afile>:r <afile>
     autocmd FileAppendPost             *.gz !mv <afile> <afile>:r
@@ -187,7 +187,7 @@ map bn  :bnext!
 map bp  :bprev!
 map bd  :bdelete
 
-map gw :grep <cword> 
+map gw :grep <cword>
 
 function! GrepForCurrentWord()
     ccl
@@ -217,7 +217,12 @@ nnoremap <leader>i :JavaImportOrganize<cr>
 nnoremap <leader>u :ProjectCacheClear<cr>:ProjectRefreshAll<cr>
 nnoremap <leader>n :lnext<cr>
 nnoremap <leader>p :lprev<cr>
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>s :split<cr>
+nnoremap <leader>e :Ex<cr>
+nnoremap <leader>o :only<cr>
 
+"autocmd BufWritePre * :%s/\s\+$//e
 
 "set t_Co=256
 "color inkpot
