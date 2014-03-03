@@ -1,8 +1,10 @@
-export PATH=~/bin:$PATH
+export PATH=~/bin:/usr/local/bin:$PATH
 
 if [ -d ~/.bash_completion.d ]; then
   source ~/.bash_completion.d/git-prompt.sh
   source ~/.bash_completion.d/git-completion.bash
+elif [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 export PS1='\u: \w$(__git_ps1 "(%s)")\$ '
