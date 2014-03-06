@@ -33,8 +33,8 @@ set backspace=2	      " Make bacspace WORK in insert mode
 "
 set nowrap            " don't wrap lines!
 " wrap toggle
-map tw :set invwrap
-" map nu :set undolevels=-1
+map tw :set invwrap<cr>
+" map nu :set undolevels=-1<cr>
 
 "
 " searching
@@ -91,7 +91,7 @@ set wildmode=longest:list,full
 " emacs sytle window management
 "
 " split current into 2 windows
-map 2 :split
+map 2 :split<cr>
 " go to next window
 map o 
 " make current the only window
@@ -105,10 +105,10 @@ set hidden
 "
 let &tags=system('tags_path | perl -pe "chop;"')
 map tf g
-map tn :tn!
-map tp :tp!
+map tn :tn!<cr>
+map tp :tp!<cr>
 map tb 
-map tl :tags
+map tl :tags<cr>
 
 map [11~ 0A 0Dppj
 map [[A 0A 0Dppj
@@ -174,18 +174,18 @@ map <leader>c :let @/ = ""<cr>
 " vile style buffer management
 "
 map bl  <leader>b
-map b1  :1buffer!
-map b2  :2buffer!
-map b3  :3buffer!
-map b4  :4buffer!
-map b5  :5buffer!
-map b6  :6buffer!
-map b7  :7buffer!
-map b8  :8buffer!
-map b9  :9buffer!
-map bn  :bnext!
-map bp  :bprev!
-map bd  :bdelete
+map b1  :1buffer!<cr>
+map b2  :2buffer!<cr>
+map b3  :3buffer!<cr>
+map b4  :4buffer!<cr>
+map b5  :5buffer!<cr>
+map b6  :6buffer!<cr>
+map b7  :7buffer!<cr>
+map b8  :8buffer!<cr>
+map b9  :9buffer!<cr>
+map bn  :bnext!<cr>
+map bp  :bprev!<cr>
+map bd  :bdelete<cr>
 
 map gw :grep <cword>
 
@@ -209,6 +209,7 @@ function! GrepForCurrentWordRails()
     cw
 endfunction
 
+nnoremap <leader>b :buffers<cr>:buffer<space>
 nnoremap <leader>g :call GrepForCurrentWord()<cr>
 nnoremap <leader>f :call GrepForCurrentWordRails()<cr>
 nnoremap <leader>q :qa<cr>
