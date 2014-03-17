@@ -11,7 +11,7 @@ export PS1='\u: \w$(__git_ps1 "(%s)")\$ '
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-alias grep="grep --exclude 'tmp'"
+alias grep="grep -I --exclude 'tmp' --exclude-dir '.git' --exclude-dir '.svn'"
 
 set -o vi
 set editing-mode vi
