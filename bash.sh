@@ -34,3 +34,5 @@ function track_remote {
 }
 
 alias gen_passwd="openssl rand -base64 32"
+
+# TODO: Write script to convert from 'https://github.com/pmckinnon/.files' style origin to 'github.com:pmckinnon/.files.git'
