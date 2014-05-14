@@ -1,5 +1,21 @@
 set runtimepath^=/au/IT/share_vim
-"set runtimepath^=/usr/local/share/vim
+
+" set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/unite.vim'
+Bundle 'groenewege/vim-less'
+Bundle 'mustache/vim-mustache-handlebars'
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+call vundle#end()
 
 filetype plugin indent on
 au BufNewFile,BufRead *.gradle setf groovy
@@ -103,7 +119,7 @@ set hidden
 "
 " tags
 "
-let &tags=system('tags_path | perl -pe "chop;"')
+"let &tags=system('tags_path | perl -pe "chop;"')
 map tf g
 map tn :tn!<cr>
 map tp :tp!<cr>
@@ -118,6 +134,10 @@ map [[A 0A 0Dppj
 "
 set background=dark
 syntax enable
+" Some stupid bullshit hack:
+" http://stackoverflow.com/questions/5602767/why-is-vim-not-detecting-my-coffescript-filetype
+filetype off
+filetype on
 
 
 "
@@ -210,8 +230,8 @@ function! GrepForCurrentWordRails()
 endfunction
 
 nnoremap <leader>b :buffers<cr>:buffer<space>
-nnoremap <leader>g :call GrepForCurrentWord()<cr>
-nnoremap <leader>f :call GrepForCurrentWordRails()<cr>
+"nnoremap <leader>g :call GrepForCurrentWord()<cr>
+"nnoremap <leader>f :call GrepForCurrentWordRails()<cr>
 nnoremap <leader>q :qa<cr>
 nnoremap <leader>a :Ant debug install<cr>
 nnoremap <leader>i :JavaImportOrganize<cr>
@@ -223,7 +243,31 @@ nnoremap <leader>s :split<cr>
 nnoremap <leader>e :Ex<cr>
 nnoremap <leader>o :only<cr>
 
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#custom#source('file_rec/async', 'ignore_pattern', 'html/\|build/\|.svn/\|Debug/\|.xcodeproj/\|.vcxproj\|.suo\|.git')
+"let g:unite_source_find_default_opts = "-L"
+"call unite#custom#source('file_rec/async', 'filters', 'DevLibs')
+map <leader>t :Unite -no-split -buffer-name=files file_rec/async<cr>
+map <leader>b :<C-u>Unite -no-split -buffer-name=buffer buffer<cr>
+map <leader>g :Unite -buffer-name=grep grep:.::<c-r><c-w><cr>
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+let g:unite_source_grep_recursive_opt = ''
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+
 "autocmd BufWritePre * :%s/\s\+$//e
 
 "set t_Co=256
 "color inkpot
+"
+nnoremap <Leader>m :w <BAR> !less/bootstrap.less > css/bootstrap.css<CR><space>
