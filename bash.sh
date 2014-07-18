@@ -9,7 +9,7 @@ elif [ $(command -v brew) ]; then
   fi
 fi
 
-export PS1='\u: \w$(__git_ps1 "(%s)")\$ '
+export PS1='\u@\[\033[1;34m\]\h\[\033[0m\]: \w$(__git_ps1 "(%s)")\$ '
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
