@@ -1,4 +1,4 @@
-export PATH=~/bin:/usr/local/bin:$PATH
+export PATH=~/bin:/usr/local/bin:~/packages/depot_tools:$PATH
 
 if [ -d ~/.bash_completion.d ]; then
   source ~/.bash_completion.d/git-prompt.sh

@@ -6,11 +6,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 
+Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/unite.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'mustache/vim-mustache-handlebars'
+Plugin 'tsukkee/unite-tag'
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -243,14 +245,19 @@ nnoremap <leader>s :split<cr>
 nnoremap <leader>e :Ex<cr>
 nnoremap <leader>o :only<cr>
 
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+let g:unite_source_grep_recursive_opt = ''
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('file_rec/async', 'ignore_pattern', 'html/\|build/\|.svn/\|Debug/\|.xcodeproj/\|.vcxproj\|.suo\|.git')
+call unite#custom#source('file_rec/async', 'ignore_pattern', 'html/\|build/\|.svn/\|Debug/\|.xcodeproj/\|.vcxproj\|.suo\|.git\|.class')
 "let g:unite_source_find_default_opts = "-L"
 "call unite#custom#source('file_rec/async', 'filters', 'DevLibs')
-map <leader>t :Unite -no-split -buffer-name=files file_rec/async<cr>
+map <leader>t :Unite -start-insert -no-split -buffer-name=files file_rec/async<cr>
 map <leader>b :<C-u>Unite -no-split -buffer-name=buffer buffer<cr>
 map <leader>g :Unite -buffer-name=grep grep:.::<c-r><c-w><cr>
+map <leader>g :Unite -no-split grep:.<cr>
+map <leader>e :Unite -no-split -auto-preview -start-insert tag<cr>
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
 let g:unite_source_grep_recursive_opt = ''
