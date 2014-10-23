@@ -13,6 +13,7 @@ Plugin 'Shougo/unite.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'mustache/vim-mustache-handlebars'
 Plugin 'tsukkee/unite-tag'
+Bundle 'mileszs/ack.vim'
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'

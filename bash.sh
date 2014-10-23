@@ -1,4 +1,4 @@
-export PATH=~/bin:/usr/local/bin:~/packages/depot_tools:$PATH
+export PATH=~/bin:/usr/local/bin:~/packages/depot_tools:./node_modules/.bin:$PATH
 
 if [ -d ~/.bash_completion.d ]; then
   source ~/.bash_completion.d/git-prompt.sh
@@ -13,7 +13,7 @@ export PS1='\u@\[\033[1;34m\]\h\[\033[0m\]: \w$(__git_ps1 "(%s)")\$ '
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-alias grep="grep -I --exclude 'tmp' --exclude-dir '.git' --exclude-dir '.svn'"
+alias grep="grep -I --exclude 'tags' --exclude 'tmp' --exclude-dir '.git' --exclude-dir '.svn'"
 
 set -o vi
 set editing-mode vi
@@ -36,5 +36,9 @@ function track_remote {
 }
 
 alias gen_passwd="openssl rand -base64 32"
+
+alias cpp_find_files="find . -name \"*.cc\" -o -name \"*.h\" -o -name \"*.cpp\""
+alias cpp_find="cpp_find_files | grep"
+alias cpp_grep="cpp_find_files | xargs grep"
 
 # TODO: Write script to convert from 'https://github.com/pmckinnon/.files' style origin to 'github.com:pmckinnon/.files.git'
