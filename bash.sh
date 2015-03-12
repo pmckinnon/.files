@@ -1,5 +1,13 @@
 export PATH=~/bin:/usr/local/bin:~/packages/depot_tools:$PATH
 
+if [ $(command -v brew) ]; then
+  if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
+    . /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+  fi
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
 
 export PS1='\u@\[\033[1;34m\]\h\[\033[0m\]: \w$(__git_ps1 "(%s)")\$ '
 export CLICOLOR=1
