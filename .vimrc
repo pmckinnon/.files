@@ -14,6 +14,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'mustache/vim-mustache-handlebars'
 Plugin 'tsukkee/unite-tag'
 Bundle 'mileszs/ack.vim'
+Bundle 'mxw/vim-jsx'
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -273,6 +274,15 @@ function! s:unite_settings()
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
 
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 "autocmd BufWritePre * :%s/\s\+$//e
 
 "set t_Co=256

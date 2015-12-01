@@ -1,4 +1,4 @@
-export PATH=~/bin:/usr/local/bin:~/packages/depot_tools:$PATH
+export PATH=~/bin:/usr/local/bin:/home/prm/packages/jdk/bin:$PATH
 
 if [ $(command -v brew) ]; then
   if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
@@ -39,4 +39,6 @@ alias gen_passwd="openssl rand -base64 32"
 
 alias nat_discovery='java -cp ~/bin/NATCrackerDiscovery-0.1-SNAPSHOT-jar-with-dependencies.jar com.peerialism.natcracker.discovery.Main'
 
+complete -C '/usr/bin/aws_completer' aws
 # TODO: Write script to convert from 'https://github.com/pmckinnon/.files' style origin to 'github.com:pmckinnon/.files.git'
+alias jsonp="python -m json.tool"
