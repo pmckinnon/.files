@@ -14,6 +14,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'mustache/vim-mustache-handlebars'
 Plugin 'tsukkee/unite-tag'
 Bundle 'mileszs/ack.vim'
+Plugin 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
 
 " let Vundle manage Vundle, required
