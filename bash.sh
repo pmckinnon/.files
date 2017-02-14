@@ -9,7 +9,11 @@ if [ $(command -v brew) ]; then
   fi
 fi
 
-export PS1='\u@\[\033[1;34m\]\h\[\033[0m\]: \w$(__git_ps1 "(%s)")\$ '
+if [ -f ~/.kube/completion ]; then
+  . ~/.kube/completion
+fi
+
+export PS1='\u@\[\033[1;34m\]\h$(__git_ps1 "\[\033[0m\](\[\033[1;36m\]%s\[\033[0m\])")\[\033[0m\]: \w\[\033[1;33m\]\$\[\033[0m\] '
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
