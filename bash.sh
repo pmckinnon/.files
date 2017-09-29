@@ -1,10 +1,12 @@
 export PATH=~/bin:/usr/local/bin:/home/prm/packages/jdk/bin:$PATH
 
 if [ $(command -v brew) ]; then
-  if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
+  if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+    . ~/.git-completion.bash
+  elif [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
     . /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
-  fi
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  elif [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
@@ -13,6 +15,11 @@ if [ -f ~/.kube/completion ]; then
   . ~/.kube/completion
 fi
 
+if [ -f ~/.git-prompt.sh ]; then
+  . ~/.git-prompt.sh
+fi
+
+#export PS1='\u@\[\033[1;34m\]\h\[\033[0m\]: \w$(__git_ps1 "(%s)")\$ '
 export PS1='\u@\[\033[1;34m\]\h$(__git_ps1 "\[\033[0m\](\[\033[1;36m\]%s\[\033[0m\])")\[\033[0m\]: \w\[\033[1;33m\]\$\[\033[0m\] '
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -23,7 +30,7 @@ set -o vi
 set editing-mode vi
 set keymap vi
 
-export set ANDROID_HOME=~/code/android/sdk
+export set ANDROID_HOME=/Users/prm/Library/Android/sdk
 export set PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 alias vi=vim
 export set EDITOR="vim -X"
@@ -43,6 +50,9 @@ alias gen_passwd="openssl rand -base64 32"
 
 alias nat_discovery='java -cp ~/bin/NATCrackerDiscovery-0.1-SNAPSHOT-jar-with-dependencies.jar com.peerialism.natcracker.discovery.Main'
 
-complete -C '/usr/bin/aws_completer' aws
+#complete -C '/usr/bin/aws_completer' aws
+complete -C '/usr/local/aws/bin/aws_completer' aws
 # TODO: Write script to convert from 'https://github.com/pmckinnon/.files' style origin to 'github.com:pmckinnon/.files.git'
 alias jsonp="python -m json.tool"
+
+alias dns_clear="sudo dscacheutil -flushcache"

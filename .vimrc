@@ -16,6 +16,12 @@ Plugin 'tsukkee/unite-tag'
 Bundle 'mileszs/ack.vim'
 Plugin 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
+Plugin 'elzr/vim-json'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'elixir-lang/vim-elixir'
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -70,10 +76,6 @@ map th :set invhlsearch
 "
 " code style
 "
-set tabstop=2         " use 2 space tabs
-set softtabstop=2     " makes 2 spaces feel like tabs
-set shiftwidth=2      " Indent 2 spaces
-set expandtab         " expand tabs into spaces (bad for Makefiles)
   " /usr/local/share/vim/ftdetect avoids Makefiles
 set formatoptions=    " disable unwanted vim formating
 set showmatch         " disable matching [({ for ]}] when inserted
@@ -143,7 +145,6 @@ syntax enable
 " http://stackoverflow.com/questions/5602767/why-is-vim-not-detecting-my-coffescript-filetype
 filetype off
 filetype on
-
 
 "
 " automatically handle compressed files
@@ -290,3 +291,23 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 "color inkpot
 "
 nnoremap <Leader>m :w <BAR> !less/bootstrap.less > css/bootstrap.css<CR><space>
+
+
+augroup groovy
+    setl tabstop=4
+    setl softtabstop=4
+
+    autocmd!
+    autocmd BufWritePost,FileWritePost *.groovy !cat <afile> | pbcopy
+augroup END
+
+augroup FileType python
+    setl tabstop=4
+    setl softtabstop=4
+    setl shiftwidth=4
+augroup END
+
+setl tabstop=4
+setl softtabstop=4
+setl shiftwidth=4
+set expandtab         " expand tabs into spaces (bad for Makefiles)
