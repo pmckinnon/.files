@@ -1,13 +1,19 @@
 export PATH=~/bin:/usr/local/bin:/home/prm/packages/jdk/bin:$PATH
+export PYTHONPATH=.:$PYTHONPATH
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH:/Users/prm/.bin
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
 
 if [ $(command -v brew) ]; then
   if [ -f ~/.git-prompt.sh ]; then
     . ~/.git-prompt.sh
     . ~/.git-completion.bash
-  elif [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
-    . /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
   elif [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
+  elif [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
+    . /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
   fi
 fi
 
@@ -30,8 +36,8 @@ set -o vi
 set editing-mode vi
 set keymap vi
 
-export set ANDROID_HOME=/Users/prm/Library/Android/sdk
-export set PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export set ANDROID_HOME=~/Documents/android
+export set PATH=$PATH:$ANDROID_HOME/platform-tools
 alias vi=vim
 export set EDITOR="vim -X"
 alias tm="tmux -2 attach -d || tmux"
@@ -56,3 +62,6 @@ complete -C '/usr/local/aws/bin/aws_completer' aws
 alias jsonp="python -m json.tool"
 
 alias dns_clear="sudo dscacheutil -flushcache"
+alias cps_forward="kubectl get pods | grep customer | head -n1 | awk '{print $1}' | xargs -I{} kubectl port-forward {} 8000:8000"
+
+alias json="echo $1 | jq"

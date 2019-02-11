@@ -292,6 +292,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 "
 nnoremap <Leader>m :w <BAR> !less/bootstrap.less > css/bootstrap.css<CR><space>
 
+setl tabstop=4
+setl softtabstop=4
+setl shiftwidth=4
 
 augroup groovy
     setl tabstop=4
@@ -307,7 +310,10 @@ augroup FileType python
     setl shiftwidth=4
 augroup END
 
-setl tabstop=4
-setl softtabstop=4
-setl shiftwidth=4
+augroup FileType json
+    setl tabstop=2
+    setl softtabstop=2
+    setl shiftwidth=2
+augroup END
+
 set expandtab         " expand tabs into spaces (bad for Makefiles)
